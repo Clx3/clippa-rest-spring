@@ -1,6 +1,12 @@
+CREATE SCHEMA IF NOT EXISTS clippa
+    AUTHORIZATION postgres;
+
 SET search_path TO clippa;
 
-CREATE TABLE IF NOT EXISTS userAccount(
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(25)
+CREATE TABLE IF NOT EXISTS user_account(
+    id BIGSERIAL PRIMARY KEY
 );
+
+ALTER TABLE user_account
+ADD COLUMN email VARCHAR(300) NOT NULL UNIQUE,
+ADD COLUMN username VARCHAR(30) UNIQUE;
