@@ -13,7 +13,8 @@ public class SecurityConfiguration {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		final String[] authRequiredPaths = {
-				"/users**"
+				"/users",
+				"/users/**"
 		};
 
 		http.authorizeHttpRequests(requests -> requests
