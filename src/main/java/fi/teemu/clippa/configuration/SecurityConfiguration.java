@@ -13,12 +13,12 @@ public class SecurityConfiguration {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		final String[] authRequiredPaths = {
-			"/user/register"
+				"/users**"
 		};
 
 		http.authorizeHttpRequests(requests -> requests
-				.requestMatchers("/**").permitAll()
-				.requestMatchers(authRequiredPaths).authenticated())
+				.requestMatchers(authRequiredPaths).authenticated()
+				.anyRequest().permitAll())
 			.oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
 			.csrf(AbstractHttpConfigurer::disable);
 

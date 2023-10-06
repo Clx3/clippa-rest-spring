@@ -24,5 +24,9 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://localhost:8080/realms/clippa/.well-known/openid-configuration
+          issuer-uri:
+
+logging:
+  level:
+    org.springframework.security: DEBUG
 
