@@ -9,7 +9,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "user_details")
-public class UserDetails {
+public class ClippaUserDetails {
 
 	@Id
 	private Long id;

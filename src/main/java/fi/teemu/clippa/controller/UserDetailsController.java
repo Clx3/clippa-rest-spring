@@ -1,6 +1,6 @@
 package fi.teemu.clippa.controller;
 
-import fi.teemu.clippa.persistence.entity.UserDetails;
+import fi.teemu.clippa.persistence.entity.ClippaUserDetails;
 import fi.teemu.clippa.service.UserDetailsService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +18,19 @@ public class UserDetailsController {
     private UserDetailsService userDetailsService;
 
     @GetMapping("/users")
-    public List<UserDetails> getUsers() {
+    public List<ClippaUserDetails> getUsers() {
         return userDetailsService.findAll();
     }
 
+    @GetMapping("/users/self")
+    public ResponseEntity<ClippaUserDetails> getCurrentUser() {
+        Optional<ClippaUserDetails> userDetails = userDetailsService.findSelf();
+        return userDetails.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     @GetMapping("/users/{id}")
-    public ResponseEntity<UserDetails> getById(@PathVariable long id) {
-        Optional<UserDetails> userDetails = userDetailsService.findById(id);
+    public ResponseEntity<ClippaUserDetails> getById(@PathVariable long id) {
+        Optional<ClippaUserDetails> userDetails = userDetailsService.findById(id);
 
         if (userDetails.isPresent()) {
             return ResponseEntity.ok(userDetails.get());
