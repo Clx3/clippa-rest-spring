@@ -1,9 +1,9 @@
 package fi.teemu.clippa.repository;
 
-import fi.teemu.clippa.persistence.entity.User;
+import fi.teemu.clippa.persistence.entity.UserDetails;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserDetailsRepository extends CrudRepository<UserDetails, Long> {
 }
