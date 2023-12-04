@@ -1,0 +1,12 @@
+name: Clippa Deploy Workflow
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+    paths:
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Testing workflows Hello world!
