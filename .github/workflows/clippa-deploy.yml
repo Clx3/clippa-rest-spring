@@ -9,4 +9,4 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Testing workflows Hello world!
+      - run: echo "Testing workflows Hello world!"
